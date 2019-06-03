@@ -9,8 +9,6 @@ exports.up = function(knex, Promise) {
         howto
             .string( 'title' , 128 )
             .notNullable();
-        howto
-            .number( 'likes' ).defaultTo( 0 )
     })
 };
 

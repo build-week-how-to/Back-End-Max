@@ -19,6 +19,18 @@ router.get( '/' , async ( req , res ) => {
     }
 });
 
+//ADD A HOWTO
+router.post( '/', async ( req, res ) => {
+    console.log( req.body );
+    try {
+        const howtos = await Howtos.insert( req.body );
+        res.status( 201 ).json( howtos );
+    } catch ( error ) {
+        console.log( error );
+        res.status( 500 ).json({ message: 'Error adding HowTo' });
+    }
+});
+
 //GET HOWTO BY ID ⬇︎
 router.get( '/:id' , async ( req , res ) => {
     try {
