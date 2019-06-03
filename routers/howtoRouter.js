@@ -50,4 +50,8 @@ router.delete( '/:id' , async ( req , res ) => {
 });
 
 //UPDATE HOWTO ⬇︎
-router
+router.put( '/:id' , async ( req , res ) => {
+    try {
+        const howto = await Howtos.update( req.params.id )
+    }
+})
