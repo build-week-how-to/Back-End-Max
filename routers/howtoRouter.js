@@ -52,6 +52,32 @@ router.delete( '/:id' , async ( req , res ) => {
 //UPDATE HOWTO ⬇︎
 router.put( '/:id' , async ( req , res ) => {
     try {
-        const howto = await Howtos.update( req.params.id )
+        const howto = await Howtos.update( req.params.id, req.body );
+        if ( howto ) {
+            res.status( 200 ).json( howto );
+        } else {
+            res.status( 404 ).json({ message: 'HowTo not found' })
+        }
+    } catch ( error ) {
+        console.log( error );
+        res.status( 500 ).json({ message: 'Server error updating HowTo' })
     }
-})
+});
+
+//GET HOWTO STEPS ⬇︎
+router.get( '/:id/actions' , async ( req , res ) => {
+    try {
+        const howto = await Howtos.getSteps( req.params.id );
+        if ( howto ) {
+            res.status( 200 ).json( howto );
+        } else {
+            res.status( 404 ).json({ message: 'No Steps found for this HowTo' });
+        }
+    } catch ( error ) {
+        console.log( error );
+        res.status( 500 ).json({ message: 'Server error getting steps' });
+    }
+});
+
+//EXPORTS ⬇︎
+module.exports = router;
