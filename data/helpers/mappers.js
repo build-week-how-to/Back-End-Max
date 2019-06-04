@@ -2,16 +2,17 @@
 //EXPORTS ⬇︎
 module.exports = {
     howtoToBody,
-    stepsToBody
+    stepsToBody,
+    toggleStep
 };
 
 //FUNCTIONS ⬇︎
 function howtoToBody( howto ) {
     const result = {
-        ...project
+        ...howto
     };
 
-    if ( project.steps ) {
+    if ( howto.steps ) {
         result.steps = howto.steps.map( step => ({
             ...step
         }));
@@ -25,3 +26,18 @@ function stepsToBody( step ) {
         ...step
     }
 }
+
+function toggleStep ( howto ) {
+    const result = {
+        ...howto
+    };
+
+    if ( howto.steps ) {
+        result.steps = howto.steps.map( step => ({
+            ...step,
+        }));
+    }
+
+    return result;
+
+};
