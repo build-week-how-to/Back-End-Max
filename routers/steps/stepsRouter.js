@@ -4,10 +4,9 @@ const express = require( 'express' );
 const Steps = require( './stepModel' );
 const howtos = require( '../howto/howtoModel' );
 const router = express.Router();
-const restricted = require( '../auth/restricted' );
 
 //RECIEVING ALL STEPS ⬇︎
-router.get( '/' , restricted, ( req , res ) => {
+router.get( '/' , ( req , res ) => {
     Steps.get()
     .then( steps => {
         res.status( 200 ).json( steps );
@@ -49,7 +48,7 @@ router.post( '/' , ( req , res ) => {
 });
 
 //REMOVE STEP ⬇︎
-router.delete( '/:id' , restricted , ( req , res ) => {
+router.delete( '/:id' , ( req , res ) => {
     const { id } = req.params;
     Steps.remove( id )
     .then( step => {

@@ -2,11 +2,11 @@
 //IMPORTS ⬇︎
 const express = require( 'express' );
 const howtos = require( './howtoModel' );
-const restricted = require( '../auth/restricted' );
 const router = express.Router();
+const restr = require( '../auth/restricted' );
 
 //GET ALL HOWTOS ⬇︎
-router.get( '/' , restricted , ( req , res ) => {
+router.get( '/' , ( req , res ) => {
     howtos.get()
     .then( howto => {
         res.status( 200 ).json( howto );
@@ -17,7 +17,7 @@ router.get( '/' , restricted , ( req , res ) => {
 });
 
 //GET HOWTO BY ID ⬇︎
-router.get( '/:id' , restricted , ( req , res ) => {
+router.get( '/:id' , ( req , res ) => {
     const { id } = req.params;
     howtos.get( id )
     .then( howto => {
@@ -29,7 +29,7 @@ router.get( '/:id' , restricted , ( req , res ) => {
 });
 
 //ADD A HOWTO ⬇︎
-router.post( '/', restricted , async ( req, res ) => {
+router.post( '/' , async ( req, res ) => {
     console.log( req.body )
     try {
         const howto = await howtos.insert( req.body );
@@ -41,7 +41,7 @@ router.post( '/', restricted , async ( req, res ) => {
 });
 
 //DELETE A HOW TO ⬇︎
-router.delete( '/:id' , restricted , ( req, res ) => {
+router.delete( '/:id' , ( req, res ) => {
     const { id } = req.params;
     howtos.remove( id )
     .then( count => {
@@ -57,7 +57,7 @@ router.delete( '/:id' , restricted , ( req, res ) => {
 });
 
 //UPDATE HOWTO ⬇︎
-router.put( '/:id' , restricted , ( req , res ) => {
+router.put( '/:id' , ( req , res ) => {
     const { id } = req.params;
     const howto = req.body;
         try {

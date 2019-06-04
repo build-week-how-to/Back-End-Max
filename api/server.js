@@ -24,7 +24,7 @@ server.use( '/api/users' , userRouter );
 
 //SANITY CHECk ⬇︎
 server.get( '/' , ( req , res ) => {
-    res.send( 'Sup ✌🏼 -Server' )
+    res.status(200).json({ message: 'Sup ✌🏼 -Server' })
 });
 
 //EXPORTS ⬇︎
