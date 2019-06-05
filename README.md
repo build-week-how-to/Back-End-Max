@@ -78,6 +78,8 @@ SERVER INFO ⬇︎ {
 
             - LOGIN -
             ●   Should return status 404 if user doesnt exist
+            ●   Should return OK status code 200
+            ●   Should require authorization
 
             - REGISTER -
             ●   Should return length of 1

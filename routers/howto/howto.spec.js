@@ -7,11 +7,28 @@ const helper = require( './howtoModel' );
 
 //CLEANUP ⬇︎
 beforeEach( async () => {
+
     await db( 'howtos' ).truncate()
 
 });
 
-//REMOVED RESTRICTED MIDDLEWARE FOR THE TESTS, DONT KNOW HOW TO LOGIN FOR A TEST, FRONT END COULD CONTROL NAV BAR ACCESS
+//CLEARING RESTRICTED MIDDLEWARE ⬇︎
+let token;
+
+beforeAll((done) => {
+
+    request(server)
+        .post('/login')
+        .send({
+            username: 'user',
+            password: 'pass'
+        })
+        .end((err, response) => {
+            token = response.body.token;
+            done();
+        })
+
+});
 
 //STEPS TEST ⬇︎
 
@@ -31,6 +48,7 @@ describe( 'GET How To' , () => {
 
 //GET INDIVIDUAL HOW TO
 describe( 'GET Individual How To' , () => {
+
     it('Should return length of 1', async () => {
 
         const res = await request( server ).get( '/api/howto' )
@@ -44,7 +62,8 @@ describe( 'GET Individual How To' , () => {
         expect( res.type ).toBe( 'application/json' );
         
     });
-})
+
+});
 
 //ADD HOW TO
 describe( 'ADD Howto.js' , () => {
@@ -57,6 +76,7 @@ describe( 'ADD Howto.js' , () => {
         const res = await request( server ).get( '/api/howto/1' )
         expect( res.body.title ).toBe(  "Space Invaders");
         expect( res.type ).toBe( 'application/json' );
+
     });
 
 });
@@ -73,7 +93,8 @@ describe( 'UPDATE Howto.js' , () => {
             .send({
                 title: "Slime2",
             })
-        expect( res.status ).toBe( 200 )
+        expect( res.status ).toBe( 200 );
+
     });
 
 });
@@ -82,16 +103,20 @@ describe( 'UPDATE Howto.js' , () => {
 describe( 'DELETE Howto.js' , () => {
 
     it( 'Should return 200 if deleted successfully' , async () => {
+
         await db( 'howtos' ).insert({
             title: "Slime"
         })
         const res = await request( server ).del( '/api/howto/1' ) ;
-        expect( res.status ).toBe( 200 )
+        expect( res.status ).toBe( 200 );
+
     });
 
     it( 'Should return 404 of it doesnt exist' , async () => {
+
         const res = await request( server ).del( '/api/howto/1' ) ;
-        expect( res.status ).toBe( 404 )
+        expect( res.status ).toBe( 404 );
+
     });
 
 });

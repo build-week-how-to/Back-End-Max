@@ -5,6 +5,7 @@ const helmet = require( 'helmet' );
 const morgan = require( 'morgan' );
 const cors = require( 'cors' );
 const server = express();
+const restricted = require( '../routers/auth/restricted' );
 
 //GETTING ROUTES ⬇︎
 const howtoRoute = require( '../routers/howto/howtoRouter' );
@@ -18,8 +19,8 @@ server.use( morgan('dev'));
 server.use( cors());
 
 //APPLYING ROUTES ⬇︎
-server.use( '/api/howto' , howtoRoute );
-server.use( '/api/steps' , stepsRoute );
+server.use( '/api/howto' , howtoRoute , restricted );
+server.use( '/api/steps' , stepsRoute , restricted );
 server.use( '/api/users' , userRoute );
 
 //SANITY CHECk ⬇︎
