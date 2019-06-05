@@ -13,7 +13,6 @@ beforeEach( async () => {
 });
 
 //CLEARING RESTRICTED MIDDLEWARE ⬇︎
-
 let token;
 
 beforeAll((done) => {
@@ -33,7 +32,7 @@ beforeAll((done) => {
 
 //STEPS TEST ⬇︎
 
-//GET HOW TO
+//GET HOW TO ⬇︎
 describe( 'GET Steps.js' , () => {
 
     it( 'Should set the testing env' , () => {
@@ -51,7 +50,7 @@ describe( 'GET Steps.js' , () => {
 
 });
 
-//GET STEP BY ID
+//GET STEP BY ID ⬇︎
 describe( 'GET Steps by id' , () => {
 
     it( 'Should return status 200' , async () => {
@@ -74,7 +73,7 @@ describe( 'GET Steps by id' , () => {
     
 });
 
-//ADD HOW TO
+//ADD HOW TO ⬇︎
 describe( 'INSERT Steps.js' , () => {
 
     it('Should return length of 1', async () => {
@@ -99,7 +98,7 @@ describe( 'INSERT Steps.js' , () => {
 });
 
 
-//UPDATE HOW TO
+//UPDATE HOW TO ⬇︎
 describe( 'UPDATE Steps.js' , () => {
 
     it( 'Should return status 200' , async () => {
@@ -136,7 +135,7 @@ describe( 'UPDATE Steps.js' , () => {
 
 });
 
-//DELETE HOW TO
+//DELETE STEP ⬇︎
 describe( 'DELETE Steps.js' , () => {
 
     it( 'Should return 200 if deleted successfully' , async () => {

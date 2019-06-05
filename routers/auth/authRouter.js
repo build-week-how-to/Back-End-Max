@@ -3,12 +3,11 @@
 const router = require( 'express' ).Router();
 const bcrypt = require( 'bcryptjs' );
 const jwt = require( 'jsonwebtoken' );
-const secret = require( '../../config/secrets' );
 const Users = require( '../users/usersModel' );
-const restricted = require( './restricted' );
 
 //REGISTER USER ⬇︎
 router.post( '/register' , ( req , res ) => {
+
     if ( req.body.username && req.body.password ) {
         let user = req.body;
         const hash = bcrypt.hashSync( user.password , 10 );
@@ -23,10 +22,12 @@ router.post( '/register' , ( req , res ) => {
     } else {
         res.status( 406 ).json({ message: 'Missing required field ( username, password ).' })
     }
+
 });
 
 //LOGIN ⬇︎
 router.post( '/login' , ( req , res ) => {
+
     let { username , password } = req.body;
     if ( req.body.username && req.body.password ) {
         Users.findBy({ username })
@@ -46,10 +47,12 @@ router.post( '/login' , ( req , res ) => {
     } else {
         res.status( 406 ).json({ message: 'Missing required field ( username or password ).' })
     }
+
 });
 
 //GENERATING USERS TOKEN ⬇︎
 function generateToken( user ) {
+
     const payload = {
         subject: user.id,
         username: user.username
@@ -58,7 +61,8 @@ function generateToken( user ) {
         expiresIn: '5 days'
     }
     return jwt.sign( payload , 'Add a .env file' , options )
-}
+
+};
 
 //EXPORTS ⬇︎
 module.exports = router;

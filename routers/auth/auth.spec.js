@@ -13,7 +13,6 @@ beforeEach( async ( ) => {
 });
 
 //CLEARING RESTRICTED MIDDLEWARE ⬇︎
-
 let token;
 
 beforeAll((done) => {
@@ -32,7 +31,6 @@ beforeAll((done) => {
 });
 
 //REGISTER TESTS ⬇︎
-
 describe( 'REGISTER' , () => {
 
     it('Should return length of 1', async () => {

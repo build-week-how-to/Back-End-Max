@@ -7,6 +7,7 @@ const router = express.Router();
 
 //RECIEVING ALL STEPS ⬇︎
 router.get( '/' , ( req , res ) => {
+
     Steps.get()
     .then( steps => {
         res.status( 200 ).json( steps );
@@ -14,10 +15,12 @@ router.get( '/' , ( req , res ) => {
     .catch( error => {
         res.status( 500 ).json({ message: 'Server error getting all Steps' , error })
     })
+
 });
 
 //RECIEVING STEPS BY ID ⬇︎
 router.get( '/:id' , ( req , res ) => {
+
     const { id } = req.params;
     Steps.get( id )
     .then( step => {
@@ -26,10 +29,12 @@ router.get( '/:id' , ( req , res ) => {
     .catch( error => {
         res.status( 500 ).json({ message: 'Server error getting individual Steps' , error })
     })
+
 });
 
 //ADDING STEPS TO HOWTO ⬇︎
 router.post( '/' , ( req , res ) => {
+
     const step = req.body;
     howtos.get( step.howtoId )
         .then( howto => {
@@ -45,10 +50,12 @@ router.post( '/' , ( req , res ) => {
     .catch( error => {
         res.status( 500 ).json({ message: 'Server error creating Step', error });
     })
+
 });
 
 //REMOVE STEP ⬇︎
 router.delete( '/:id' , ( req , res ) => {
+
     const { id } = req.params;
     Steps.remove( id )
     .then( step => {
@@ -61,10 +68,12 @@ router.delete( '/:id' , ( req , res ) => {
     .catch( error => {
         res.status( 500 ).json({ message: 'Server error deleting Step' , error });
     })
+
 });
 
 //UPDATING STEP ⬇︎
 router.put( '/:id' , ( req , res ) => {
+
     const { id } = req.params;
     const step = req.body;
     if ( step.step.length < 128 ) {
@@ -78,6 +87,7 @@ router.put( '/:id' , ( req , res ) => {
     } else {
         res.status( 405 ).json({ message: 'Step is longer than 128 characters ( unacceptable )' });
     }
+    
 });
 
 //EXPORTS ⬇︎

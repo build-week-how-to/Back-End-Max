@@ -12,7 +12,7 @@ const howtoRoute = require( '../routers/howto/howtoRouter' );
 const stepsRoute = require( '../routers/steps/stepsRouter' );
 const userRoute = require( '../routers/auth/authRouter' );
 
-//GLOBAL MIDDLEWARE
+//GLOBAL MIDDLEWARE ⬇︎
 server.use( express.json());
 server.use( helmet());
 server.use( morgan('dev'));

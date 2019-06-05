@@ -32,21 +32,25 @@ beforeAll((done) => {
 
 //STEPS TEST ⬇︎
 
-//GET HOW TO
+//GET HOW TO ⬇︎
 describe( 'GET How To' , () => {
 
     it( 'Should set the testing env' , () => {
-        expect( process.env.DB_ENV ).toBe( 'testing' )
+
+        expect( process.env.DB_ENV ).toBe( 'testing' );
+
     });
 
     it( 'Should be in application/json' , async () => {
-        const res = await request( server ).get( '/api/steps' );
+
+        const res = await request( server ).get( '/api/steps' )
         expect( res.type ).toBe( 'application/json' );
+
     });
 
 });
 
-//GET INDIVIDUAL HOW TO
+//GET INDIVIDUAL HOW TO ⬇︎
 describe( 'GET Individual How To' , () => {
 
     it('Should return length of 1', async () => {
@@ -65,7 +69,7 @@ describe( 'GET Individual How To' , () => {
 
 });
 
-//ADD HOW TO
+//ADD HOW TO ⬇︎
 describe( 'ADD Howto.js' , () => {
 
     it('Should return the title of the how to that you add in json', async () => {
@@ -81,10 +85,11 @@ describe( 'ADD Howto.js' , () => {
 
 });
 
-//UPDATE HOW TO
+//UPDATE HOW TO ⬇︎
 describe( 'UPDATE Howto.js' , () => {
 
     it( 'Should return status 200' , async () => {
+        
         await db( 'howtos' ).insert({
             title: "Slime",
         })
@@ -99,7 +104,7 @@ describe( 'UPDATE Howto.js' , () => {
 
 });
 
-//DELETE HOW TO
+//DELETE HOW TO ⬇︎
 describe( 'DELETE Howto.js' , () => {
 
     it( 'Should return 200 if deleted successfully' , async () => {
