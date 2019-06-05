@@ -9,7 +9,7 @@ const server = express();
 //GETTING ROUTES ⬇︎
 const howtoRoute = require( '../routers/howto/howtoRouter' );
 const stepsRoute = require( '../routers/steps/stepsRouter' );
-const userRouter = require( '../routers/auth/authRouter' );
+const userRoute = require( '../routers/auth/authRouter' );
 
 //GLOBAL MIDDLEWARE
 server.use( express.json());
@@ -20,7 +20,7 @@ server.use( cors());
 //APPLYING ROUTES ⬇︎
 server.use( '/api/howto' , howtoRoute );
 server.use( '/api/steps' , stepsRoute );
-server.use( '/api/users' , userRouter );
+server.use( '/api/users' , userRoute );
 
 //SANITY CHECk ⬇︎
 server.get( '/' , ( req , res ) => {

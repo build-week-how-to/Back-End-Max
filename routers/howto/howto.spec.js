@@ -23,7 +23,7 @@ describe( 'GET How To' , () => {
     });
 
     it( 'Should be in application/json' , async () => {
-        const res = await request( server ).get( '/api/howto' );
+        const res = await request( server ).get( '/api/steps' );
         expect( res.type ).toBe( 'application/json' );
     });
 
@@ -32,11 +32,31 @@ describe( 'GET How To' , () => {
 //GET INDIVIDUAL HOW TO
 
 //ADD HOW TO
+describe( 'ADD Howto.js' , () => {
+
+    
+
+});
 
 //UPDATE HOW TO
+describe( 'UPDATE Howto.js' , () => {
+
+    it( 'Should return status 200' , async () => {
+        await db( 'howtos' ).insert({
+            title: "Slime",
+        })
+        const res = await request( server )
+            .put( '/api/howto/1' )
+            .send({
+                title: "Slime2",
+            })
+        expect( res.status ).toBe( 200 )
+    });
+
+});
 
 //DELETE HOW TO
-describe( 'DELETE Steps.js' , () => {
+describe( 'DELETE Howto.js' , () => {
 
     it( 'Should return 200 if deleted successfully' , async () => {
         await db( 'howtos' ).insert({

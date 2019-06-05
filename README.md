@@ -67,13 +67,22 @@ SERVER INFO ⬇︎ {
 
     - TESTS ⬇︎ {
 
+        - SERVER ⬇︎ {
+            ●   Should set the testing env 
+            ●   Should return JSON
+            ●   Should return status code 200
+            ●   Should return { message: "Sup ✌🏼 -Server" }
+        }
+
         - USERS ⬇︎ {
 
             - LOGIN -
-            ●
+            ●   Should return status 404 if user doesnt exist
+            ●   
+            ●   
 
             - REGISTER -
-            ●
+            ●   Should return length of 1
 
         }
 
@@ -90,7 +99,7 @@ SERVER INFO ⬇︎ {
             ●
 
             - UPDATE HOW TO POST -
-            ●
+            ●   Should return status 200
 
             - DELETE HOW TO POST -
             ●   Should return 200 if deleted successfully
@@ -112,7 +121,8 @@ SERVER INFO ⬇︎ {
             ●   Should return 406 if missing info
 
             - UPDATE STEP -
-            ●
+            ●   Should be in application/json
+            ●   Should return status 200
 
             - DELETE STEP -
             ●   Should return 200 if deleted successfully

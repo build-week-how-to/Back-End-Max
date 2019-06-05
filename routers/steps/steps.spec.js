@@ -50,6 +50,37 @@ describe( 'INSERT Steps.js' , () => {
 
 
 //UPDATE HOW TO
+describe( 'UPDATE Steps.js' , () => {
+    it( 'Should return status 200' , async () => {
+
+        await db( 'steps' ).insert({
+            step: "Slime",
+            howtoId: 1
+        })
+        const res = await request( server )
+            .put( '/api/steps/1' )
+            .send({
+                step: "Slime2",
+                howtoId: 1
+            })
+        expect( res.status ).toBe( 200 )
+    });
+
+    it( 'Should be in application/json' , async () => {
+        await db( 'steps' ).insert({
+            step: "Slime",
+            howtoId: 1
+        })
+        const res = await request( server )
+            .put( '/api/steps/1' )
+            .send({
+                step: "Slime2",
+                howtoId: 1
+            })
+        expect( res.type ).toBe( 'application/json' );
+    });
+
+});
 
 //DELETE HOW TO
 describe( 'DELETE Steps.js' , () => {

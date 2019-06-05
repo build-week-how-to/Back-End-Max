@@ -31,29 +31,21 @@ function get( id ) {
     });
 };
 
-// //GET INDIVIDUAL HOWTO
-// function findById( id ) {
-//     return db( 'howtos' )
-//         .where({ id })
-//         .first();
-// };
-
 //GET STEPS FUNCTION ⬇︎
 function getSteps( howtoId ) {
     return db( 'steps' )
         .where( 'howtoId' , howtoId )
         .then( steps => steps.map( step => map.stepsToBody( step )));
-}
+};
 
 //ADD HOWTO ⬇︎
 function insert( howto ) {
     return db( 'howtos' )
         .insert( howto )
         .then(([ id ]) => {
-            console.log( this )
             this.get( id )
         });
-}
+};
 
 //UPDATE HOWTO ⬇︎
 function update( id , changes ) {
@@ -61,11 +53,11 @@ function update( id , changes ) {
         .where( 'id' , id )
         .update( changes )
         .then( count => ( count > 0 ? this.get( id ) : null ));
-}
+};
 
 //DELETE HOWTO ⬇︎
 function remove( id ) {
     return db( 'howtos' )
         .where( 'id' , id )
         .del();
-}
+};
