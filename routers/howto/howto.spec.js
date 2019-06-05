@@ -30,11 +30,34 @@ describe( 'GET How To' , () => {
 });
 
 //GET INDIVIDUAL HOW TO
+describe( 'GET Individual How To' , () => {
+    it('Should return length of 1', async () => {
+
+        const res = await request( server ).get( '/api/howto' )
+        expect( res.status ).toBe( 200 );
+
+    });
+
+    it('Should return JSON format', async () => {
+
+        const res = await request( server ).get( '/api/howto' )
+        expect( res.type ).toBe( 'application/json' );
+        
+    });
+})
 
 //ADD HOW TO
 describe( 'ADD Howto.js' , () => {
 
-    
+    it('Should return the title of the how to that you add in json', async () => {
+
+        await db( 'howtos' ).insert({
+            title: "Space Invaders"
+        });
+        const res = await request( server ).get( '/api/howto/1' )
+        expect( res.body.title ).toBe(  "Space Invaders");
+        expect( res.type ).toBe( 'application/json' );
+    });
 
 });
 

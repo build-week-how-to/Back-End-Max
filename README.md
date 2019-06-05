@@ -78,8 +78,6 @@ SERVER INFO ⬇︎ {
 
             - LOGIN -
             ●   Should return status 404 if user doesnt exist
-            ●   
-            ●   
 
             - REGISTER -
             ●   Should return length of 1
@@ -93,10 +91,12 @@ SERVER INFO ⬇︎ {
             ●   Should be in application/json
 
             - GET INDIVIDUAL HOW TO POST -
-            ●
+            ●   Should return length of 1
+            ●   Should return JSON format
 
             - ADD HOW TO POST -
-            ●
+            ●   Should return the title of the how to that you add
+            ●   Should return JSON format
 
             - UPDATE HOW TO POST -
             ●   Should return status 200
@@ -114,7 +114,8 @@ SERVER INFO ⬇︎ {
             ●   Should be in application/json
 
             - GET INDIVIDUAL STEPS BY ID -
-            ●
+            ●   Should return status 200
+            ●   Should be in application/json
 
             - ADD STEP -
             ●   Should return length of 1

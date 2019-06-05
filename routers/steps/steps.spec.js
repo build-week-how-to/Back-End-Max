@@ -28,6 +28,27 @@ describe( 'GET Steps.js' , () => {
 
 });
 
+//GET STEP BY ID
+describe( 'GET Steps by id' , () => {
+
+    it( 'Should return status 200' , async () => {
+
+        await Steps.add({
+            step: "Space Invaders",
+            howtoId: 1
+        });
+        const res = await request( server ).get( '/api/steps/1' )
+        expect( res.status ).toBe( 200 );
+
+    });
+
+    it( 'Should be in application/json' , async () => {
+        const res = await request( server ).get( '/api/steps/1' );
+        expect( res.type ).toBe( 'application/json' );
+    });
+    
+});
+
 //ADD HOW TO
 describe( 'INSERT Steps.js' , () => {
 
