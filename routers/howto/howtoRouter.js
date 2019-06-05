@@ -3,7 +3,7 @@
 const express = require( 'express' );
 const howtos = require( './howtoModel' );
 const router = express.Router();
-const restr = require( '../auth/restricted' );
+const restricted = require( '../auth/restricted' );
 
 //GET ALL HOWTOS ⬇︎
 router.get( '/' , ( req , res ) => {

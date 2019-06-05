@@ -8,6 +8,7 @@ const helper = require( './howtoModel' );
 //CLEANUP ⬇︎
 beforeEach( async () => {
     await db( 'howtos' ).truncate()
+
 });
 
 //REMOVED RESTRICTED MIDDLEWARE FOR THE TESTS, DONT KNOW HOW TO LOGIN FOR A TEST, FRONT END COULD CONTROL NAV BAR ACCESS
@@ -27,6 +28,8 @@ describe( 'GET How To' , () => {
     });
 
 });
+
+//GET INDIVIDUAL HOW TO
 
 //ADD HOW TO
 
