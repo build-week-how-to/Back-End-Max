@@ -19,9 +19,12 @@
     https://build-week-how-to.herokuapp.com
 
 *Headers:*
+
+
 | Name          | Value             | Required |
 | ------------- | ----------------- | -------- |
 | Content-Type  | application/json  | Yes      |
+
 
 ---
 # Register a User ⬇︎ <a name="register"></a>
