@@ -19,7 +19,7 @@ server.use( morgan('dev'));
 server.use( cors());
 
 //APPLYING ROUTES ⬇︎
-server.use( '/api/howto' , howtoRoute , restricted );
+server.use( '/api/howto' , howtoRoute  );
 server.use( '/api/steps' , stepsRoute , restricted );
 server.use( '/api/users' , userRoute );
 

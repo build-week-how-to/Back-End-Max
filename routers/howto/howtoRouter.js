@@ -50,9 +50,9 @@ router.delete( '/:id' , ( req, res ) => {
 
     const { id } = req.params;
     howtos.remove( id )
-    .then( count => {
-        if ( count ) {
-            res.status( 200 ).json({ message: 'Successfully Deleted' , count });
+    .then( howto => {
+        if ( howto ) {
+            res.status( 200 ).json({ message: 'Successfully Deleted' });
         } else {
             res.status( 404 ).json({ message: 'Can not find How to to Delete' });
         }
